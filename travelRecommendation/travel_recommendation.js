@@ -17,14 +17,20 @@ function searchCondition() {
                 data[input].forEach(country =>{
                     country["cities"].forEach(element =>{
                         resultDiv.innerHTML += `<h2>${element.name}</h2>`;
-                        resultDiv.innerHTML += `<img src="${element.imageUrl}" alt="hjh">`;      
+                        resultDiv.innerHTML += `<img src="${element.imageUrl}" alt="hjh">`; 
+                        const options = { timeZone: element.timezone, hour12: true, hour: 'numeric', minute: 'numeric', second: 'numeric' };   
+                        const cTime = new Date().toLocaleTimeString('en-US', options);  
+                        resultDiv.innerHTML += `<p><strong>Current time:</strong> ${cTime}</p>`;
                         resultDiv.innerHTML += `<p><strong>Description:</strong> ${element.description}</p>`;
                     });
                 });
             } else{
                 data[input].forEach(element => {
                     resultDiv.innerHTML += `<h2>${element.name}</h2>`;
-                    resultDiv.innerHTML += `<img src="${element.imageUrl}" alt="hjh">`;      
+                    resultDiv.innerHTML += `<img src="${element.imageUrl}" alt="hjh">`;     
+                    const options = { timeZone: element.timezone, hour12: true, hour: 'numeric', minute: 'numeric', second: 'numeric' };
+                    const cTime = new Date().toLocaleTimeString('en-US', options); 
+                    resultDiv.innerHTML += `<p><strong>Current time:</strong> ${cTime}</p>`; 
                     resultDiv.innerHTML += `<p><strong>Description:</strong> ${element.description}</p>`;
                     
                 });

@@ -75,21 +75,21 @@ nav {
   }
   
   #report,#result {
-    padding: 10px;
-    max-width: 400px;
+    padding: 10px;    
     word-wrap: break-word;
   }
 #result{
-  height: 400px;
-  width: 500px;
+  
+ 
   display: flex;
   align-items: center;
   justify-content: space-around;
   flex-direction: column;
 }
   #result img{
-    width: 200px;
-    height: 100px;
+    max-width: 600px;
+    
+    
     justify-content: space-around;
   }
 .intro {
@@ -99,6 +99,7 @@ nav {
 .intro2 {
     color: white;
 }
-.intro2 {
-    background-color: black;
+.intro3 {
+    background-color: white;
+    max-width: 600px;
 }
