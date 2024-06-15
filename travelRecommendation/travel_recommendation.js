@@ -9,9 +9,46 @@ function searchCondition() {
 
 
     fetch('travel_recommendation_api.json')
-      .then(response => response.json());
+      .then(response => response.json())
+      .then(data => {
+        const dat = data[input]
+        if(dat){
+            if(input == "countries"){                
+                data[input].forEach(country =>{
+                    country["cities"].forEach(element =>{
+                        resultDiv.innerHTML += `<h2>${element.name}</h2>`;
+                        resultDiv.innerHTML += `<img src="${element.imageUrl}" alt="hjh">`;      
+                        resultDiv.innerHTML += `<p><strong>Description:</strong> ${element.description}</p>`;
+                    });
+                });
+            } else{
+                data[input].forEach(element => {
+                    resultDiv.innerHTML += `<h2>${element.name}</h2>`;
+                    resultDiv.innerHTML += `<img src="${element.imageUrl}" alt="hjh">`;      
+                    resultDiv.innerHTML += `<p><strong>Description:</strong> ${element.description}</p>`;
+                    
+                });
+            }
+            
+            
+        } else{
+            resultDiv.innerHTML = 'Condition not found.';
+        }
+                  
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        resultDiv.innerHTML = 'An error occurred while fetching data.';
+      });
 
     
-    console.log(resultDiv);
+    
 }
+
+function clearCondition() {
+    const resultDiv = document.getElementById('result');
+    resultDiv.innerHTML = '';
+}
+
 btnSearch.addEventListener('click', searchCondition);
+btnClear.addEventListener('click', clearCondition);
